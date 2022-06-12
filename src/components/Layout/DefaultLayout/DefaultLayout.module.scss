@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column; //để căn thằng header và container theo chiều dọc
+  align-items: center;
+}
+
+.container {
+  width: var(--default-layout-width);
+  display: flex;
+}
+
+.content {
+  flex: 1; //chiếm hết khoảng còn lại
+}
