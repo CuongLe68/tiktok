@@ -1,0 +1,84 @@
+.wrapper {
+  display: inline-flex; //để icon và chữ luôn nằm thẳng hàng và chính giữa
+  align-items: center;
+  justify-content: center; //loại bỏ khoảng cách khi xóa icon
+  min-width: 100px;
+  padding: 9px 16px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--white);
+  border: 1px solid transparent;
+  user-select: none; //Không select vào được (vd như bôi đen,...)
+
+  + .wrapper {
+    //Nếu có 1 nút khác có class là wrapper thì sẽ thức hiện các css trong này
+    margin-left: 8px;
+  }
+
+  &.disabled {
+    pointer-events: none; //không có sự kiện gì khi rê chuột vào
+    opacity: 0.5;
+  }
+}
+
+//Nếu sau icon có title hoặc ngược lại
+.icon + .title,
+.title + .icon {
+  margin-left: 8px;
+}
+
+//Button type (ưu tiên từ class dưới cùng lên trên cùng)
+.rounded {
+  border-color: rgba(22, 24, 35, 0.12);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  border-radius: 999px;
+
+  &:hover {
+    border-color: rgba(22, 24, 35, 0.2);
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.primary {
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+
+  &:hover {
+    border-color: var(--primary);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),
+      #ef2950;
+  }
+}
+
+.outline {
+  color: var(--primary);
+  border-color: currentColor; //ăn theo màu ở trên
+
+  &:hover {
+    border-color: currentColor;
+    background-color: rgba(254, 44, 85, 0.06);
+  }
+}
+
+.text {
+  padding-right: 18px;
+  border-color: rgba(22, 24, 35, 0.12);
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+//Button size
+.small {
+  min-width: 88px;
+  padding: 4px 16px;
+}
+
+.large {
+  padding: 14px 16px;
+  min-width: 168px;
+}
