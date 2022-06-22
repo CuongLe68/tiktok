@@ -8,6 +8,10 @@
   font-weight: 700;
   border-radius: 4px;
   cursor: pointer;
+  //<------ Thay đổi tạm thời, có font mặc định của web sẽ đổi lại, chỉ mang tính chất minh họa
+  color: var(--text-color);
+  font-family: Arial;
+  //------->
   background-color: var(--white);
   border: 1px solid transparent;
   user-select: none; //Không select vào được (vd như bôi đen,...)
@@ -27,6 +31,12 @@
 .icon + .title,
 .title + .icon {
   margin-left: 8px;
+}
+
+.icon {
+  display: inline-block; //để có thể set width
+  width: 15px;
+  text-align: center;
 }
 
 //Button type (ưu tiên từ class dưới cùng lên trên cùng)
