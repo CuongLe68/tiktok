@@ -1,3 +1,4 @@
+//Chứa toàn bộ header
 import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
@@ -21,7 +22,7 @@ import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
-import Menu from "~/components/Popper/Menu";
+import Menu from "~/components/Popper/Menu/Menu";
 
 const cx = classNames.bind(styles); // giúp class có thể viết kiểu a-b (vd: header-item)
 
@@ -29,6 +30,21 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
     title: "Tiếng Việt",
+    children: {
+      title: "Language",
+      data: [
+        {
+          type: "Language",
+          code: "en",
+          title: "English",
+        },
+        {
+          type: "Language",
+          code: "vi",
+          title: "Tiếng Việt",
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
@@ -49,6 +65,17 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  //Handle logic
+  const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+      case "Language":
+        // handle change language
+        break;
+      default:
+      // handle change
+    }
+  };
 
   return (
     <header className={cx("wrapper")}>
@@ -100,7 +127,7 @@ function Header() {
           </Button>
           <Button primary>Đăng nhập</Button>
 
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx("more-btn")}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>

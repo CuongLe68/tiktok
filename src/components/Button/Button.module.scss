@@ -52,6 +52,8 @@
 }
 
 .primary {
+  height: 36px;
+  padding: 6px 8px;
   color: var(--white);
   background-color: var(--primary);
   border-color: var(--primary);
@@ -74,6 +76,7 @@
 }
 
 .text {
+  height: 36px;
   padding-right: 18px;
   border-color: rgba(22, 24, 35, 0.12);
 
