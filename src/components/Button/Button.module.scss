@@ -4,14 +4,11 @@
   justify-content: center; //loại bỏ khoảng cách khi xóa icon
   min-width: 100px;
   padding: 9px 16px;
+  border-radius: 4px;
   font-size: 1.6rem;
   font-weight: 700;
-  border-radius: 4px;
+  font-family: "ProximaNova", sans-serif;
   cursor: pointer;
-  //<------ Thay đổi tạm thời, có font mặc định của web sẽ đổi lại, chỉ mang tính chất minh họa
-  color: var(--text-color);
-  font-family: Arial;
-  //------->
   background-color: var(--white);
   border: 1px solid transparent;
   user-select: none; //Không select vào được (vd như bôi đen,...)

@@ -96,10 +96,41 @@
   }
 }
 
+//Actions
+.acctions {
+  display: flex;
+  align-items: center;
+}
+
 .more-btn {
   font-size: 2rem;
   margin-left: 28px;
   padding: 4px 8px;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.action-btn {
+  background-color: transparent;
+  font-size: 2.2rem;
+  color: #161823;
+  cursor: pointer;
+}
+
+.message-btn {
+  padding: 4px 0 0;
+  margin: 4px 0 2px 20px;
+}
+
+.inbox-btn {
+  margin: 6px 12px 0 24px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 12px;
   cursor: pointer;
 }
