@@ -1,10 +1,11 @@
 //import component
 import { useEffect, useState, useRef } from "react";
-import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
-
+import classNames from "classnames/bind";
 import HeadlessTippy from "@tippyjs/react/headless";
+
+import * as searchServices from "~/apiServices/searchServices";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import styles from "./Search.module.scss";
@@ -14,46 +15,45 @@ import { SearchIcon } from "~/components/Icons";
 const cx = classNames.bind(styles);
 
 function Search() {
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const [showResult, setShowResult] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [searchValue, setSearchValue] = useState(""); //lấy giả trị của ô input
+  const [searchResult, setSearchResult] = useState([]); //kết quả tìm kiếm
+  const [showResult, setShowResult] = useState(true); //kết quả trả về
+  const [loading, setLoading] = useState(false); //trong lúc tìm kiếm và hiển thị kết quả
 
   const debounced = useDebounce(searchValue, 500);
 
   const inputRef = useRef();
 
   useEffect(() => {
+    //kiểm tra chuỗi nhập vào là chuỗi rỗng hoặc dấu cách ở đầu
     if (!debounced.trim()) {
       //nếu không nhập gì(loại bỏ các dấu cách thừa)
       setSearchResult([]);
       return;
     }
 
-    setLoading(true);
+    //gọi api
+    const fetchApi = async () => {
+      //set icon load
+      setLoading(true);
 
-    fetch(
-      //hàm endcode để mã hóa theo định dạng khi truyền url
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      const result = await searchServices.search(debounced); //truyến debounced vào q ở bên kia, type mặc định bằng less nên k truyền
+      setSearchResult(result);
+
+      setLoading(false);
+    };
+
+    fetchApi();
   }, [debounced]);
 
+  //hàm để xử lý khi click vào nút xóa trên ô tìm kiếm
   const handleClear = () => {
     setSearchValue("");
     setSearchResult([]);
     inputRef.current.focus();
   };
 
+  //hàm xử lý tắt kết quả tìm kiếm khi click ra ngoài kết quả
   const handleHideResult = () => {
     setShowResult(false);
   };

@@ -142,7 +142,7 @@ function Header() {
             {currentUser ? (
               <Image
                 className={cx("user-avatar")}
-                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/0aa44602961295cf1a09941e58560b41.jpeg?x-expires=1656406800&x-signature=ndtsY4ZV0%2B0nJjVwXdjvCtXVoyY%3D"
+                src="https://www.saokim.com.vn/blog/wp-content/uploads/2010/10/logo-hinh-tron-saokim.png"
                 alt="Nguyễn Văn A"
                 fallback="https://www.saokim.com.vn/blog/wp-content/uploads/2010/10/logo-hinh-tron-saokim.png"
               />
