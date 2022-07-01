@@ -1,18 +1,7 @@
 //Chứa toàn bộ header
-import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-
-//import Tippy
-import Tippy from "@tippyjs/react/"; //khi hover vào mặc định sẽ hiển thị cái gì đó
-import HeadlessTippy from "@tippyjs/react/headless";
-import "tippy.js/dist/tippy.css";
-
-//impor icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleXmark,
-  faSpinner,
-  faMagnifyingGlass,
   faPlus,
   faEllipsisVertical,
   faEarthAsia,
@@ -23,16 +12,16 @@ import {
   faGear,
   faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
+import Tippy from "@tippyjs/react/"; //khi hover vào mặc định sẽ hiển thị cái gì đó
+import "tippy.js/dist/tippy.css";
 
-//import component
-import { Wrapper as PopperWrapper } from "~/components/Popper";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
 import { Inbox, MessageIcon } from "~/components/Icons";
 import Image from "~/components/Image";
+import Search from "../Search";
 
 const cx = classNames.bind(styles); // giúp class có thể viết kiểu a-b (vd: header-item)
 
@@ -93,15 +82,7 @@ const userMenu = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
-
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
 
   //Handle logic
   const handleMenuChange = (menuItem) => {
@@ -115,44 +96,17 @@ function Header() {
   };
 
   return (
+    //logo
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <div className={cx("logo")}>
           <img src={images.logo} alt="Logo Tiktok" />
         </div>
 
-        <HeadlessTippy
-          interactive //Giúp tương tác được với phần value của tippy
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx("search-title")}>Account</h4>
+        {/* tìm kiếm */}
+        <Search />
 
-                {/* Hiện account */}
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input
-              placeholder="Tìm kiếm tài khoản và video"
-              spellCheck={false}
-            />
-            <button className={cx("clear")}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
-
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </HeadlessTippy>
-
+        {/* chức năng */}
         <div className={cx("acctions")}>
           <Button
             text
@@ -171,6 +125,7 @@ function Header() {
               <Tippy content="Hộp thư" placement="bottom">
                 <button className={cx("action-btn")}>
                   <Inbox className={cx("inbox-btn")} />
+                  <span className={cx("badge")}>12</span>
                 </button>
               </Tippy>
             </>
@@ -187,9 +142,9 @@ function Header() {
             {currentUser ? (
               <Image
                 className={cx("user-avatar")}
-                src="ttps://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/0aa44602961295cf1a09941e58560b41.jpeg?x-expires=1656406800&x-signature=ndtsY4ZV0%2B0nJjVwXdjvCtXVoyY%3D"
+                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/0aa44602961295cf1a09941e58560b41.jpeg?x-expires=1656406800&x-signature=ndtsY4ZV0%2B0nJjVwXdjvCtXVoyY%3D"
                 alt="Nguyễn Văn A"
-                fallback="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/0aa44602961295cf1a09941e58560b41.jpeg?x-expires=1656406800&x-signature=ndtsY4ZV0%2B0nJjVwXdjvCtXVoyY%3D"
+                fallback="https://www.saokim.com.vn/blog/wp-content/uploads/2010/10/logo-hinh-tron-saokim.png"
               />
             ) : (
               <button className={cx("more-btn")}>

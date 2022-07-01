@@ -11,7 +11,7 @@ import Search from "~/pages/Search";
 const publicRoutes = [
   { path: "/following", component: Following },
   { path: "/", component: Home },
-  { path: "/profile", component: Profile },
+  { path: "/@:nickname", component: Profile }, //nếu path có @ thì nó sẽ match,:nickname không cố định
   { path: "/upload", component: Upload, layout: HeaderOnly },
   { path: "/search", component: Search, layout: null },
 ];
