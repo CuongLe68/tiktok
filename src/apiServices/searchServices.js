@@ -5,6 +5,7 @@ import * as request from "~/utils/request"; //import tất cả thành object re
 export const search = async (q, type = "less") => {
   try {
     const res = await request.get("users/search", {
+      //request lấy cái baseURL
       params: {
         q, //tương ứng với q: q
         type,

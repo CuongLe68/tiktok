@@ -14,7 +14,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react/"; //khi hover vào mặc định sẽ hiển thị cái gì đó
 import "tippy.js/dist/tippy.css";
+import { Link } from "react-router-dom";
 
+import routesConfig from "~/config/routes";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import Button from "~/components/Button";
@@ -99,9 +101,9 @@ function Header() {
     //logo
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <div className={cx("logo")}>
+        <Link to={routesConfig.home} className={cx("logo-link")}>
           <img src={images.logo} alt="Logo Tiktok" />
-        </div>
+        </Link>
 
         {/* tìm kiếm */}
         <Search />

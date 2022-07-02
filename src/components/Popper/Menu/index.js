@@ -12,7 +12,12 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({
+  children,
+  items = [],
+  hideOnClick = false,
+  onChange = defaultFn,
+}) {
   const [history, setHistory] = useState([{ data: items }]); //history khởi tạo chính bằng data: items nhận từ MENU_ITEMS(data là đại diện cho 1 object hiện tại)
   const current = history[history.length - 1]; //Lấy phần tử cuối cùng cảu mảng(history này chỉ có 1 phần tử duy nhất nên k thể - 2 hoặc 0)
 
@@ -40,8 +45,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   return (
     <Tippy
       interactive
-      delay={[0, 700]}
+      delay={[0, 600]}
       offset={[12, 8]} //thay đổi vị trí qua về của tippy
+      hideOnClick={hideOnClick}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx("menu-list")} tabIndex="-1" {...attrs}>

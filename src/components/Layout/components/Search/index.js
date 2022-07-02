@@ -58,6 +58,16 @@ function Search() {
     setShowResult(false);
   };
 
+  //Khi nhập vào ô input
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+
+    if (!searchValue.startsWith(" ")) {
+      //startsWith bắt đầu bằng dấu cái gì đó, trong trường hợp này là dấu cách
+      setSearchValue(searchValue);
+    }
+  };
+
   return (
     <HeadlessTippy
       interactive //Giúp tương tác được với phần value của tippy
@@ -80,7 +90,7 @@ function Search() {
           value={searchValue}
           placeholder="Tìm kiếm tài khoản và video"
           spellCheck={false}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setShowResult(true)}
         />
         {!!searchValue && !loading && (
@@ -92,7 +102,10 @@ function Search() {
           <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
         )}
 
-        <button className={cx("search-btn")}>
+        <button
+          className={cx("search-btn")}
+          onMouseDown={(e) => e.preventDefault()}
+        >
           <SearchIcon />
         </button>
       </div>

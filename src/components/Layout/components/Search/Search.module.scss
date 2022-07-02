@@ -15,6 +15,7 @@
     font-size: 1.6rem;
     caret-color: var(--primary);
     background-color: transparent;
+    font-family: var(--font-family);
 
     //khi nhập vào input thì button sẽ chuyển màu
     &:not(:placeholder-shown) ~ .search-btn {
