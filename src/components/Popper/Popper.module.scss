@@ -1,4 +1,6 @@
 .wrapper {
+  display: flex; //Chuyển thành hàng ngang để có thể cuốn được
+  flex-direction: column; //chuyển flex thành hàng dọc
   width: 100%;
   max-height: min((100vh - 96px) - 60px, 734px);
   min-height: 100px;

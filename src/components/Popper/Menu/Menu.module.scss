@@ -12,6 +12,10 @@
   padding-bottom: 8px;
 }
 
+.menu-body {
+  overflow-y: auto; //co chiều dài lại, nếu item vượt quá chiều cao thì tự ẩn (thanh cuộn)
+}
+
 //Menu items
 .menu-item {
   width: 100%;
@@ -33,6 +37,7 @@
 //Header
 .header {
   position: relative;
+  flex-shrink: 0; //Để cho nó k bị co khi các item khác có flex
   height: 50px;
   margin-top: -8px;
 }

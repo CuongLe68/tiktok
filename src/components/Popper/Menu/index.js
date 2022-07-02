@@ -60,11 +60,11 @@ function Menu({
                 }}
               />
             )}
-            {renderItems()}
+            <div className={cx("menu-body")}>{renderItems()}</div>
           </PopperWrapper>
         </div>
       )}
-      onHide={() => setHistory((prev) => prev.slice(0, 1))}
+      onHide={() => setHistory((prev) => prev.slice(0, 1))} //dùng ở phần ngôn ngữ
     >
       {children}
     </Tippy>
