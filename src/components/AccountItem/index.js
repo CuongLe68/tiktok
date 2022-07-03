@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -23,5 +24,10 @@ function AccountItem({ data }) {
     </Link>
   );
 }
+
+//kiểm tra dữ liệu truyền vào có phải là object không bằng thư viện PropTypes
+AccountItem.propTypes = {
+  data: PropTypes.object,
+};
 
 export default AccountItem;
